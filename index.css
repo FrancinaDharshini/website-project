@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Light Theme - Violet Aesthetic */
+    --background: 270 50% 98%;
+    --foreground: 270 15% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 270 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 15% 10%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 270 60% 92%;
+    --secondary-foreground: 270 15% 10%;
+
+    --muted: 270 40% 95%;
+    --muted-foreground: 270 10% 45%;
+
+    --accent: 280 70% 70%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 270 30% 88%;
+    --input: 270 30% 88%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+    
+    /* Gradients for light theme */
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(280 70% 70%));
+    --gradient-hero: linear-gradient(180deg, hsl(270 50% 98%), hsl(262 40% 95%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(270 50% 98%));
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(262 83% 58% / 0.2);
+    --shadow-card: 0 4px 20px hsl(270 30% 20% / 0.08);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark Theme - Neon Cyber Aesthetic */
+    --background: 240 10% 8%;
+    --foreground: 180 100% 90%;
+
+    --card: 240 8% 12%;
+    --card-foreground: 180 100% 90%;
+
+    --popover: 240 8% 12%;
+    --popover-foreground: 180 100% 90%;
+
+    --primary: 189 94% 43%;
+    --primary-foreground: 240 10% 8%;
+
+    --secondary: 328 86% 57%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 8% 18%;
+    --muted-foreground: 180 20% 60%;
+
+    --accent: 328 86% 57%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 8% 20%;
+    --input: 240 8% 20%;
+    --ring: 189 94% 43%;
+    
+    /* Neon gradients for dark theme */
+    --gradient-primary: linear-gradient(135deg, hsl(189 94% 43%), hsl(328 86% 57%));
+    --gradient-hero: linear-gradient(180deg, hsl(240 10% 8%), hsl(240 15% 12%));
+    --gradient-card: linear-gradient(145deg, hsl(240 8% 12%), hsl(240 10% 15%));
+    
+    /* Neon glows */
+    --shadow-glow: 0 0 40px hsl(189 94% 43% / 0.4);
+    --shadow-card: 0 4px 30px hsl(189 94% 43% / 0.15);
+    --shadow-neon-pink: 0 0 20px hsl(328 86% 57% / 0.5);
+    --shadow-neon-cyan: 0 0 20px hsl(189 94% 43% / 0.5);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+  
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .animate-slide-in {
+    animation: slideIn 0.6s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .neon-border {
+    border: 1px solid hsl(var(--primary));
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3);
+  }
+  
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+}
